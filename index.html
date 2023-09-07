@@ -17,6 +17,16 @@
         <!-- Left Panel for Adding/Removing Ingredients -->
         <div class="col-md-3 col-lg-2 sidebar">
           <h2>Ingredients</h2>
+          <!-- Input for API Key -->
+          <div class="form-group">
+            <label for="apiKey">API Key</label>
+            <input
+              type="text"
+              class="form-control"
+              id="apiKey"
+              placeholder="Enter API Key"
+            />
+          </div>
           <form id="ingredient-form">
             <div class="form-group">
               <label for="ingredientName">Ingredient Name</label>
@@ -52,7 +62,7 @@
       </div>
     </div>
 
-    <!-- Modal for Displaying Ingredients -->
+    <!-- Modal for Displaying Ingredients and Loading Indicator -->
     <div
       class="modal fade"
       id="ingredientModal"
@@ -76,8 +86,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <!-- Ingredient list will be displayed here -->
+          <div class="modal-body" style="max-height: 600px; overflow-y: auto">
+            <div id="loadingIndicator" class="text-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <p>Loading...</p>
+            </div>
+            <div id="ingredientContent" style="display: none">
+              <!-- Ingredient list will be displayed here -->
+            </div>
           </div>
           <div class="modal-footer">
             <button
